@@ -5,26 +5,20 @@
 pool:
   vmImage: 'Ubuntu 16.04'
 
-#steps:
-#- bash: |
-#    which bash
-#    echo Hello world
-#  displayName: Multiline Bash script
-#  env:
-#    name: Microsoft  
 
 steps:
+- checkout: self
+  fetchDepth: 3
+
 - bash: |
     export CHROME_SOURCE_URL=https://dl.google.com/dl/linux/direct/google-chrome-stable_current_amd64.deb
     wget --no-verbose -O /tmp/$(basename $CHROME_SOURCE_URL) $CHROME_SOURCE_URL
   displayName: Install chrome
 
-- checkout: self
-  fetchDepth: 3
 
-- bash: |
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-  displayName: install nvm
+#- bash: |
+#    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+#  displayName: install nvm
 
 - bash: |
     export PATH=./node_modules/.bin:$PATH
@@ -35,3 +29,9 @@ steps:
     echo nvm version=
     nvm --version
   displayName: check version
+
+
+- bash: |
+    bundle install --deployment --jobs=3 --retry=3 --clean
+  displayName: Bundle Install
+  
