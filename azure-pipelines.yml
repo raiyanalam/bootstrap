@@ -19,11 +19,10 @@ steps:
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash    
   displayName: install nvm
 
-- bash: |    
-    source ~/.profile
-  displayName: install nvm
+
 
 - bash: |
+    source ~/.profile
     export PATH=./node_modules/.bin:$PATH
     echo node version=
     node --version
