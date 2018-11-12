@@ -15,9 +15,11 @@ steps:
     wget --no-verbose -O /tmp/$(basename $CHROME_SOURCE_URL) $CHROME_SOURCE_URL
   displayName: Install chrome
 
-
 - bash: |
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash    
+  displayName: install nvm
+
+- bash: |    
     source ~/.profile
   displayName: install nvm
 
