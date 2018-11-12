@@ -15,22 +15,26 @@ steps:
     wget --no-verbose -O /tmp/$(basename $CHROME_SOURCE_URL) $CHROME_SOURCE_URL
   displayName: Install chrome
 
-- bash: |
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash    
-  displayName: install nvm
+#- bash: |
+#    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+#    source ~/.profile    
+#  displayName: install nvm
 
 
 
-- bash: |
-    source ~/.profile
+- bash: |    
     export PATH=./node_modules/.bin:$PATH
     echo node version=
     node --version
     echo npm version=
     npm --version
-    echo nvm version=
-    nvm --version
+    #echo nvm version=
+    #nvm --version
   displayName: check version
+
+- bash: |    
+    gem --version
+  displayName: test script
 
 
 - bash: |
