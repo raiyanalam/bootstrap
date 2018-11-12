@@ -1,12 +1,11 @@
-# Jekyll site
-# Package your Jekyll site using the jekyll/builder Docker container image.
-# Add steps that build, test, save build artifacts, deploy, and more:
-# https://aka.ms/yaml
+# twbs/Bootstrap repo
+# Build using azure pipelines
+# For more info on azure pipelines visit: https://azure.microsoft.com/en-in/services/devops/pipelines/
 
 pool:
   vmImage: 'Ubuntu 16.04'
 
-script:
-  - export CHROME_SOURCE_URL=https://dl.google.com/dl/linux/direct/google-chrome-stable_current_amd64.deb
-  - wget --no-verbose -O /tmp/$(basename $CHROME_SOURCE_URL) $CHROME_SOURCE_URL
+script: |
+export CHROME_SOURCE_URL=https://dl.google.com/dl/linux/direct/google-chrome-stable_current_amd64.deb
+wget --no-verbose -O /tmp/$(basename $CHROME_SOURCE_URL) $CHROME_SOURCE_URL
   
