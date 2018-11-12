@@ -26,8 +26,8 @@ steps:
     node --version
     echo npm version=
     npm --version
-    echo nvm version=
-    nvm --version
+    #echo nvm version=
+    #nvm --version
   displayName: check version
 
 
