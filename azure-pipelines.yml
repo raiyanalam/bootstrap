@@ -5,9 +5,10 @@
 pool:
   vmImage: 'Ubuntu 16.04'
 
+steps:
 - bash: |
     which bash
-    echo Hello $name
+    echo Hello world
   displayName: Multiline Bash script
   env:
     name: Microsoft  
