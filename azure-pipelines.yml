@@ -19,3 +19,12 @@ steps:
     wget --no-verbose -O /tmp/$(basename $CHROME_SOURCE_URL) $CHROME_SOURCE_URL
   displayName: Install chrome
 
+- checkout: self
+  fetchDepth: 3
+
+
+- bash: |
+    node --version
+    npm --version
+    nvm --version
+  displayName: check node version
