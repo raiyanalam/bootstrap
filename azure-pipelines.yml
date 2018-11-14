@@ -20,6 +20,9 @@ steps:
 #    source ~/.profile    
 #  displayName: install nvm
 
+- bash: |
+    gem install bundler  
+  displayName: install bundler
 
 
 - bash: |    
