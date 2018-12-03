@@ -2,6 +2,8 @@
 # Build using azure pipelines
 # For more info on azure pipelines visit: https://azure.microsoft.com/en-in/services/devops/pipelines/
 # azure pipelines ruby app: https://docs.microsoft.com/en-us/azure/devops/pipelines/languages/ruby?view=vsts
+# how to install: https://github.com/twbs/bootstrap/blob/f83f4ae124fec1012bbecf6d6e748a709031f2fa/site/docs/4.1/getting-started/build-tools.md
+
 
 # Caching bundle and node modules
 # install bundle
@@ -31,12 +33,13 @@ steps:
     bundle install --retry=3 --jobs=4
   displayName: Install Bundler
 
-- script: |    
-    nvm install 6    
-  displayName: Install NVM
-  failOnStderr: true
+#- script: |    
+#    nvm install 6    
+#  displayName: Install NVM
+#  failOnStderr: true
 
 - bash: |    
+    pwd
     export PATH=./node_modules/.bin:$PATH
     echo node version=
     node --version
@@ -44,7 +47,8 @@ steps:
     npm --version   
   displayName: Check Node Version
 
-- script: |    
+- bash: |    
+    
     npm install    
   displayName: Install NPM modules
   failOnStderr: true
