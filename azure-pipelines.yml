@@ -57,6 +57,7 @@ steps:
 
 - bash: |      
     rm ./package-lock.json  
+    npm set audit false
     npm install    
   displayName: Install NPM modules
   failOnStderr: true
