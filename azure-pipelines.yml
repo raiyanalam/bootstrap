@@ -52,12 +52,14 @@ steps:
 - bash: |        
     rm ./package-lock.json
     npm install jquery@1.9.1 --save
+    npm audit fix
   displayName: Install Peer dependency
   failOnStderr: true
 
 - bash: |      
     rm ./package-lock.json  
     npm install    
+    npm audit fix
   displayName: Install NPM modules
   failOnStderr: true
 
