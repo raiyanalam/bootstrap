@@ -45,7 +45,5 @@ steps:
   displayName: test script
 
 
-- bash: |
-    bundle install --deployment --jobs=3 --retry=3 --clean
-  displayName: Bundle Install
+
   
