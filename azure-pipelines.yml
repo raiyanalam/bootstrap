@@ -52,7 +52,7 @@ steps:
 - bash: |        
     rm ./package-lock.json
     npm install jquery@1.9.1 --save
-  displayName: Install peer dependency
+  displayName: Install Peer dependency
   failOnStderr: true
 
 - bash: |      
