@@ -41,6 +41,12 @@ steps:
   displayName: Check Node Version
 
 - script: |    
+    npm install    
+  displayName: Install NPM modules
+  failOnStderr: true
+
+
+- script: |    
     npm test    
   displayName: Run Tests
   failOnStderr: true
