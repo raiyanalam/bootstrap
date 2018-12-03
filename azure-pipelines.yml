@@ -35,13 +35,11 @@ steps:
     echo node version=
     node --version
     echo npm version=
-    npm --version
-    #echo nvm version=
-    #nvm --version
+    npm --version   
   displayName: check version
 
-- bash: |    
-    gem --version
+- script: |    
+    npm run check-broken-links;
   displayName: test script
 
 
