@@ -31,6 +31,10 @@ steps:
     bundle install --retry=3 --jobs=4
   displayName: Install Bundler
 
+- script: |    
+    nvm install 6    
+  displayName: Install NVM
+  failOnStderr: true
 
 - bash: |    
     export PATH=./node_modules/.bin:$PATH
@@ -48,6 +52,7 @@ steps:
 
 - script: |    
     npm test    
+    #npm run check-broken-links
   displayName: Run Tests
   failOnStderr: true
 
