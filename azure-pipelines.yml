@@ -11,7 +11,7 @@ steps:
 - checkout: self
   fetchDepth: 3
 
-steps:
+
 - task: UseRubyVersion@0
   inputs:
     versionSpec: '>= 2.4'
