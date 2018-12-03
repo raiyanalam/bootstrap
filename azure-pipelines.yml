@@ -60,7 +60,7 @@ steps:
     npm set audit false
     npm install    
   displayName: Install NPM modules
-  failOnStderr: true
+  failOnStderr: false
 
 
 - script: |    
