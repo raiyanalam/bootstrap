@@ -65,9 +65,9 @@ steps:
 
 - script: |    
     npm test    
-    #npm run check-broken-links
+    npm run check-broken-links
   displayName: Run Tests
-  failOnStderr: true
+  
 
 
   
