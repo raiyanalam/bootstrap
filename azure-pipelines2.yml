@@ -1,7 +1,6 @@
 # twbs/Bootstrap repo
 # Build using azure pipelines
 # For more info on azure pipelines visit: https://azure.microsoft.com/en-in/services/devops/pipelines/
-# azure pipelines ruby app: https://docs.microsoft.com/en-us/azure/devops/pipelines/languages/ruby?view=vsts
 
 pool:
   vmImage: 'Ubuntu 16.04'
@@ -11,22 +10,18 @@ steps:
 - checkout: self
   fetchDepth: 3
 
-steps:
-- task: UseRubyVersion@0
-  inputs:
-    versionSpec: '>= 2.4'
-    addToPath: true
-
-
 - bash: |
     export CHROME_SOURCE_URL=https://dl.google.com/dl/linux/direct/google-chrome-stable_current_amd64.deb
     wget --no-verbose -O /tmp/$(basename $CHROME_SOURCE_URL) $CHROME_SOURCE_URL
   displayName: Install chrome
 
+#- bash: |
+#    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+#    source ~/.profile    
+#  displayName: install nvm
 
 - bash: |
     gem install bundler  
-    bundle install --retry=3 --jobs=4
   displayName: install bundler
 
 
