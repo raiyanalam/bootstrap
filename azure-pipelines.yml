@@ -49,13 +49,12 @@ steps:
     npm --version   
   displayName: Check Node Version
 
-#- bash: |        
-#    npm install jquery@1.9.1 --save
-#  displayName: Install peer dependency
-#  failOnStderr: true
+- bash: |        
+    npm install jquery@1.9.1 --save
+  displayName: Install peer dependency
+  failOnStderr: true
 
-- bash: |  
-    rm -rf ./node_modules/    
+- bash: |      
     rm ./package-lock.json  
     npm install    
   displayName: Install NPM modules
