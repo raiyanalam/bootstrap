@@ -40,6 +40,7 @@ steps:
 
 - bash: |    
     pwd
+    ll
     export PATH=./node_modules/.bin:$PATH
     echo node version=
     node --version
