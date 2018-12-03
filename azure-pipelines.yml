@@ -34,7 +34,7 @@ steps:
 - script: |
     gem install bundler  
     bundle install --retry=3 --jobs=4
-  displayName: Install Bundler
+  displayName: Install Bundler/Dependencies
 
 #- script: |    
 #    nvm install 6    
@@ -55,7 +55,8 @@ steps:
 #  failOnStderr: true
 
 - bash: |  
-    rm -rf ./node_modules/      
+    rm -rf ./node_modules/    
+    rm ./package-lock.json  
     npm install    
   displayName: Install NPM modules
   failOnStderr: true
