@@ -3,6 +3,10 @@
 # For more info on azure pipelines visit: https://azure.microsoft.com/en-in/services/devops/pipelines/
 # azure pipelines ruby app: https://docs.microsoft.com/en-us/azure/devops/pipelines/languages/ruby?view=vsts
 
+# Caching bundle and node modules
+# install bundle
+# 
+
 pool:
   vmImage: 'Ubuntu 16.04'
 
@@ -19,13 +23,13 @@ steps:
 - bash: |
     export CHROME_SOURCE_URL=https://dl.google.com/dl/linux/direct/google-chrome-stable_current_amd64.deb
     wget --no-verbose -O /tmp/$(basename $CHROME_SOURCE_URL) $CHROME_SOURCE_URL
-  displayName: Install chrome
+  displayName: Install Chrome
 
 
 - script: |
     gem install bundler  
     bundle install --retry=3 --jobs=4
-  displayName: install bundler
+  displayName: Install Bundler
 
 
 - bash: |    
@@ -34,11 +38,10 @@ steps:
     node --version
     echo npm version=
     npm --version   
-  displayName: check version
+  displayName: Check Node Version
 
 - script: |    
-    npm test
-    npm run check-broken-links
+    npm test    
   displayName: Run Tests
   failOnStderr: true
 
