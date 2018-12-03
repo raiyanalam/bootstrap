@@ -23,6 +23,8 @@ steps:
     addToPath: true
 
 - bash: |
+    pwd
+    ll
     export CHROME_SOURCE_URL=https://dl.google.com/dl/linux/direct/google-chrome-stable_current_amd64.deb
     wget --no-verbose -O /tmp/$(basename $CHROME_SOURCE_URL) $CHROME_SOURCE_URL
   displayName: Install Chrome
@@ -38,9 +40,7 @@ steps:
 #  displayName: Install NVM
 #  failOnStderr: true
 
-- bash: |    
-    pwd
-    ll
+- bash: |       
     export PATH=./node_modules/.bin:$PATH
     echo node version=
     node --version
@@ -48,8 +48,7 @@ steps:
     npm --version   
   displayName: Check Node Version
 
-- bash: |    
-    
+- bash: |        
     npm install    
   displayName: Install NPM modules
   failOnStderr: true
