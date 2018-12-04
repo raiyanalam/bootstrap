@@ -56,7 +56,7 @@ steps:
     then
       npm run js-test-cloud      
     fi
-    npm run coveralls
+    npm run coveralls || echo "coveralls could not complete"
   displayName: Run Tests
   
 
