@@ -58,6 +58,10 @@ steps:
     fi
     npm run coveralls || echo "coveralls could not complete"
   displayName: Run Tests
+
+- script: |      
+    npm run coveralls || echo "coveralls could not complete"
+  displayName: Run Coverage 
   
 
 
