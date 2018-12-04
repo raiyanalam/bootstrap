@@ -3,7 +3,7 @@
 # For more info on azure pipelines visit: https://azure.microsoft.com/en-in/services/devops/pipelines/
 # azure pipelines ruby app: https://docs.microsoft.com/en-us/azure/devops/pipelines/languages/ruby?view=vsts
 # bundle install: https://github.com/twbs/bootstrap/blob/f83f4ae124fec1012bbecf6d6e748a709031f2fa/site/docs/4.1/getting-started/build-tools.md
-
+# node version: https://docs.microsoft.com/en-us/azure/devops/pipelines/languages/javascript?view=vsts&tabs=yaml
 
 pool:
   vmImage: 'Ubuntu 16.04'
@@ -39,6 +39,7 @@ steps:
     node --version
     echo npm version=
     npm --version   
+    rm ./package-lock.json
   displayName: Check Node Version
 
 
