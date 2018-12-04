@@ -66,6 +66,7 @@ steps:
 - script: |    
     npm test    
     npm run check-broken-links
+    npm run coveralls
   displayName: Run Tests
   
 
