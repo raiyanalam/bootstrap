@@ -53,15 +53,20 @@ steps:
 #    npm install    
 #  displayName: Install NPM 
   
-
-
-- script: |    
-    npm test    
-    npm run check-broken-links  
+#- script: |    
+#    npm test    
+#    npm run check-broken-links  
 #    if [ "$BUILD.REASON" = "IndividualCI" && !`git log --format=%B --no-merges -n 1 | grep '\[skip browser\]'` ]
 #    then
 #      npm run js-test-cloud      
 #    fi
+#    npm run js-test-cloud
+#    npm run coveralls || echo "coveralls could not complete"
+#  displayName: Run Tests
+
+- script: |    
+    npm test    
+    npm run check-broken-links 
     npm run js-test-cloud
     npm run coveralls || echo "coveralls could not complete"
   displayName: Run Tests
