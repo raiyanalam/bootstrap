@@ -46,7 +46,7 @@ steps:
 - task: Npm@1
   displayName: 'npm install'
   inputs:
-    verbose: false
+    verbose: true
 
 #- bash: |      
 #    rm ./package-lock.json    
