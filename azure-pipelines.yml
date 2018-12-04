@@ -44,8 +44,7 @@ steps:
 
 
 - bash: |      
-    rm ./package-lock.json  
-    npm set audit false
+    rm ./package-lock.json    
     npm install    
   displayName: Install NPM modules
   
@@ -54,6 +53,7 @@ steps:
 - script: |    
     npm test    
     npm run check-broken-links
+    npm run js-test-cloud
     npm run coveralls
   displayName: Run Tests
   
