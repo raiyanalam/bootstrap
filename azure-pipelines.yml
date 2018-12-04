@@ -42,10 +42,15 @@ steps:
   displayName: Check Node Version
 
 
-- bash: |      
-    rm ./package-lock.json    
-    npm install    
-  displayName: Install NPM modules
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    verbose: false
+
+#- bash: |      
+#    rm ./package-lock.json    
+#    npm install    
+#  displayName: Install NPM 
   
 
 
@@ -60,7 +65,7 @@ steps:
   displayName: Run Tests
 
 - script: |      
-    npm run coveralls || echo "coveralls could not complete"
+    npm run coveralls || echo "coveralls could not run successfully"
   displayName: Run Coverage 
   
 
