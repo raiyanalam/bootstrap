@@ -6,7 +6,7 @@
 # node version: https://docs.microsoft.com/en-us/azure/devops/pipelines/languages/javascript?view=vsts&tabs=yaml
 
 jobs:
-- job: Ubuntu1604
+- job: Ubuntu 1604
   pool:
     #vmImage: 'Ubuntu 16.04'
     #vmImage: 'macOS-10.13'
