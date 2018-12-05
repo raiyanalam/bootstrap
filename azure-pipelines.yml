@@ -38,6 +38,10 @@ jobs:
       bundle install --retry=3 --jobs=4
     displayName: Install Bundler/Dependencies
 
+  - task: NodeTool@0
+    displayName: Use Node $(node_version)
+    inputs:
+      versionSpec: $(node_version)
 
   - bash: |       
       export PATH=./node_modules/.bin:$PATH
