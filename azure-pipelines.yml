@@ -27,7 +27,7 @@ jobs:
       versionSpec: '>= 2.4'
       addToPath: true
 
-  - bash: |
+  - script: |
       pwd
       ls -ltrh    
       export CHROME_SOURCE_URL=https://dl.google.com/dl/linux/direct/google-chrome-stable_current_amd64.deb
@@ -45,7 +45,7 @@ jobs:
     inputs:
       versionSpec: $(node_version)
 
-  - bash: |       
+  - script: |       
       export PATH=./node_modules/.bin:$PATH
       echo node version=
       node --version
