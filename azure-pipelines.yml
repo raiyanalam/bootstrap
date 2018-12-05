@@ -8,9 +8,9 @@
 jobs:
 - job: Ubuntu1604
   pool:
-    vmImage: 'Ubuntu 16.04'
+    #vmImage: 'Ubuntu 16.04'
     #vmImage: 'macOS-10.13'
-    #vmImage: 'vs2017-win2016'
+    vmImage: 'vs2017-win2016'
 
   strategy:
     matrix:    
