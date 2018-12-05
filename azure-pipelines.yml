@@ -25,10 +25,10 @@ jobs:
   - checkout: self
     fetchDepth: 3
 
-#  - task: UseRubyVersion@0
-#    inputs:
-#      versionSpec: '>= 2.4'
-#      addToPath: true
+  - task: UseRubyVersion@0
+    inputs:
+      versionSpec: '>= 2.4'
+      addToPath: true
 
   - script: |
       pwd
@@ -79,10 +79,11 @@ jobs:
   - script: |    
       npm test    
       npm run check-broken-links 
-      npm run js-test-cloud
-      npm run coveralls || echo "coveralls could not complete"
+      npm run js-test-cloud      
     displayName: Run Tests
 
-
+- script: |    
+      npm run coveralls || echo "coveralls could not complete"
+    displayName: Run Coverage
 
   
