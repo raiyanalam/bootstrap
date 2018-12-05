@@ -4,13 +4,15 @@
 # azure pipelines ruby app: https://docs.microsoft.com/en-us/azure/devops/pipelines/languages/ruby?view=vsts
 # bundle install: https://github.com/twbs/bootstrap/blob/f83f4ae124fec1012bbecf6d6e748a709031f2fa/site/docs/4.1/getting-started/build-tools.md
 # node version: https://docs.microsoft.com/en-us/azure/devops/pipelines/languages/javascript?view=vsts&tabs=yaml
+# templating: https://docs.microsoft.com/en-us/azure/devops/pipelines/process/templates?view=vsts#passing-parameters
+#
 
 jobs:
 - job: Ubuntu_1604
   pool:
-    #vmImage: 'Ubuntu 16.04'
+    vmImage: 'Ubuntu 16.04'
     #vmImage: 'macOS-10.13'
-    vmImage: 'vs2017-win2016'
+    #vmImage: 'vs2017-win2016'
 
   strategy:
     matrix:    
