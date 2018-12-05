@@ -82,7 +82,7 @@ jobs:
       npm run js-test-cloud      
     displayName: Run Tests
 
-- script: |    
+  - script: |    
       npm run coveralls || echo "coveralls could not complete"
     displayName: Run Coverage
 
