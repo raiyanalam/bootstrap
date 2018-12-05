@@ -7,7 +7,8 @@
 jobs:
 - job: Ubuntu1604
   pool:
-    vmImage: 'Ubuntu 16.04'
+    #vmImage: 'Ubuntu 16.04'
+    vmImage: 'macOS-10.13'
 
   strategy:
     matrix:    
@@ -60,10 +61,7 @@ jobs:
     inputs:
       verbose: true
 
-  #- bash: |      
-  #    rm ./package-lock.json    
-  #    npm install    
-  #  displayName: Install NPM 
+ 
 
   #- script: |    
   #    npm test    
