@@ -5,75 +5,81 @@
 # bundle install: https://github.com/twbs/bootstrap/blob/f83f4ae124fec1012bbecf6d6e748a709031f2fa/site/docs/4.1/getting-started/build-tools.md
 # node version: https://docs.microsoft.com/en-us/azure/devops/pipelines/languages/javascript?view=vsts&tabs=yaml
 
-pool:
-  vmImage: 'Ubuntu 16.04'
+job: Ubuntu-1604 Job
+  pool:
+    vmImage: 'Ubuntu 16.04'
+
+  strategy:
+    matrix:      
+      node_8_x:
+        node_version: 8.x
+      node_10_x:
+        node_version: 10.x
+
+  steps:  
+  - checkout: self
+    fetchDepth: 3
+
+  - task: UseRubyVersion@0
+    inputs:
+      versionSpec: '>= 2.4'
+      addToPath: true
+
+  - bash: |
+      pwd
+      ls -ltrh    
+      export CHROME_SOURCE_URL=https://dl.google.com/dl/linux/direct/google-chrome-stable_current_amd64.deb
+      wget --no-verbose -O /tmp/$(basename $CHROME_SOURCE_URL) $CHROME_SOURCE_URL
+    displayName: Install Chrome
 
 
-steps:
-
-- checkout: self
-  fetchDepth: 3
-
-- task: UseRubyVersion@0
-  inputs:
-    versionSpec: '>= 2.4'
-    addToPath: true
-
-- bash: |
-    pwd
-    ls -ltrh    
-    export CHROME_SOURCE_URL=https://dl.google.com/dl/linux/direct/google-chrome-stable_current_amd64.deb
-    wget --no-verbose -O /tmp/$(basename $CHROME_SOURCE_URL) $CHROME_SOURCE_URL
-  displayName: Install Chrome
+  - script: |
+      gem install bundler  
+      bundle install --retry=3 --jobs=4
+    displayName: Install Bundler/Dependencies
 
 
-- script: |
-    gem install bundler  
-    bundle install --retry=3 --jobs=4
-  displayName: Install Bundler/Dependencies
+  - bash: |       
+      export PATH=./node_modules/.bin:$PATH
+      echo node version=
+      node --version
+      echo npm version=
+      npm --version
+      rm ./package-lock.json
+    displayName: Check Node Version
 
 
-- bash: |       
-    export PATH=./node_modules/.bin:$PATH
-    echo node version=
-    node --version
-    echo npm version=
-    npm --version
-    rm ./package-lock.json
-  displayName: Check Node Version
+  - task: Npm@1
+    displayName: 'npm install'
+    inputs:
+      verbose: true
 
+  #- bash: |      
+  #    rm ./package-lock.json    
+  #    npm install    
+  #  displayName: Install NPM 
 
-- task: Npm@1
-  displayName: 'npm install'
-  inputs:
-    verbose: true
+  #- script: |    
+  #    npm test    
+  #    npm run check-broken-links  
+  #    if [ "$BUILD.REASON" = "IndividualCI" && !`git log --format=%B --no-merges -n 1 | grep '\[skip browser\]'` ]
+  #    then
+  #      npm run js-test-cloud      
+  #    fi
+  #    npm run js-test-cloud
+  #    npm run coveralls || echo "coveralls could not complete"
+  #  displayName: Run Tests
 
-#- bash: |      
-#    rm ./package-lock.json    
-#    npm install    
-#  displayName: Install NPM 
-  
-#- script: |    
-#    npm test    
-#    npm run check-broken-links  
-#    if [ "$BUILD.REASON" = "IndividualCI" && !`git log --format=%B --no-merges -n 1 | grep '\[skip browser\]'` ]
-#    then
-#      npm run js-test-cloud      
-#    fi
-#    npm run js-test-cloud
-#    npm run coveralls || echo "coveralls could not complete"
-#  displayName: Run Tests
+  - script: |    
+      npm test    
+      npm run check-broken-links 
+      npm run js-test-cloud
+      npm run coveralls || echo "coveralls could not complete"
+    displayName: Run Tests
 
-- script: |    
-    npm test    
-    npm run check-broken-links 
-    npm run js-test-cloud
-    npm run coveralls || echo "coveralls could not complete"
-  displayName: Run Tests
-
-- script: |      
-    npm run coveralls || echo "coveralls could not run successfully"
-  displayName: Run Coverage 
+  - script: |      
+      npm run coveralls || echo "coveralls could not run successfully"
+    displayName: Run Coverage 
   
 
 
