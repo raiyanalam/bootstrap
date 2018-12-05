@@ -8,7 +8,7 @@
 #
 
 jobs:
-- job: Ubuntu_1604
+- job: Bootstrap
   pool:
     vmImage: 'Ubuntu 16.04'
     #vmImage: 'macOS-10.13'
@@ -65,9 +65,9 @@ jobs:
     inputs:
       verbose: true
 
- - script: |
-    npm install browserstack-local
-  displayName: install browserstack
+  - script: |
+      npm install browserstack-local
+    displayName: install browserstack
 
   #- script: |    
   #    npm test    
