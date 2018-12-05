@@ -67,7 +67,7 @@ jobs:
 
  - script: |
     npm install browserstack-local
-    displayName: install browserstack
+  displayName: install browserstack
 
   #- script: |    
   #    npm test    
